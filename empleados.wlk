@@ -8,10 +8,20 @@ object gimenez {
     }
 
     method pagarSueldo(empleado) {
+        self.validarPagarSueldo(empleado.sueldo())
         fondoParaSueldos -= empleado.sueldo()
         empleado.cobrarSueldo()
     }
 
+    method validarPagarSueldo(sueldoAPagar) {
+        if(not self.puedePagar(sueldoAPagar)) {
+            self.error("No se puede pagar el sueldo de un empleado si no se cuenta con suficente dinero.")
+        }
+    }
+
+    method puedePagar(sueldoAPagar) {
+        return self.fondo() > sueldoAPagar
+    }
 }
 
 
