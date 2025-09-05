@@ -1,0 +1,10 @@
+import empleados.*
+
+describe "Test de validacion" {
+    test "Galvan no puede pagar el sueldo de un empleado si no cuenta con suficente dinero" {
+        galvan.sueldo(400000)
+        assert.throwsException({gimenez.pagarSueldo(galvan)})
+        assert.equals(300000, gimenez.fondo())
+        assert.equals(0, galvan.dinero())
+    }
+}
